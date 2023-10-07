@@ -4,7 +4,7 @@ import './EventDetails.css'
 
 const EventDetails = ({data}) => {
     const { id } = useParams()
-    const [event, setEvent] = useState({id: 0, name: "", image: "", description: "", submittedon: ""})
+    const [event, setEvent] = useState({id: 0, name: "", image: "", description: "", location: "", submittedon: ""})
 
 
     useEffect(() => {
@@ -26,7 +26,8 @@ const EventDetails = ({data}) => {
                 <div className="gift-details">
                     <h2 id="name">{event.name}</h2>
                     <p id="description">{event.description}</p>
-                    <p id="submittedBy">{'Submitted On: ' + event.submittedon } </p>
+                    <p id='location'>{'Location: ' + event.location}</p>
+                    <p id="submittedBy">{'Submitted On: ' + event.submittedon} </p>
                 </div>
             </main>
         </div>

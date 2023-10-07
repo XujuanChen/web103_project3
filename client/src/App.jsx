@@ -6,7 +6,8 @@ import { useRoutes } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import Events from './pages/Events'
 import EventDetails from './pages/eventDetails';
-import PageNotFound from './pages/PageNotFound'
+import PageNotFound from './pages/PageNotFound';
+import Welcome from './pages/Welcome'
 
 function App() {
   const [events, setEvents] = useState([]);
@@ -22,7 +23,8 @@ function App() {
   // Sets up routes
   let element = useRoutes([
     {
-      path:"/"
+      path:"/",
+      element: <Welcome />
     },
     {
       path: "/events",
@@ -39,8 +41,7 @@ function App() {
   ]);
 
   return (
-    <div className="App">
-
+    <div className="app">
       <header>
         <div className="header-container">
           <div className="header-left">
