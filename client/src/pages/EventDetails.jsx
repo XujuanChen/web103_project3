@@ -4,7 +4,8 @@ import './EventDetails.css'
 
 const EventDetails = ({data}) => {
     const { id } = useParams()
-    const [event, setEvent] = useState({id: 0, name: "", image: "", description: "", location: "", submittedon: ""})
+    // name, website, about, phone, location, image, date, time
+    const [event, setEvent] = useState({id: 0, name: "", website:"", about:"", phone:"", location:"", image: "", date: "", tune: ""})
 
 
     useEffect(() => {
@@ -12,6 +13,7 @@ const EventDetails = ({data}) => {
             const response = await fetch(`http://localhost:3001/events/${id}`)
             const json = await response.json()
             setEvent(json)
+            console.log(json)
         }
         fetchEventById()
     }, [data, id]);
@@ -25,9 +27,12 @@ const EventDetails = ({data}) => {
                 </div>
                 <div className="gift-details">
                     <h2 id="name">{event.name}</h2>
-                    <p id="description">{event.description}</p>
+                    <p>{'Website: ' + event.website}</p>
+                    <p>{'About: ' + event.about}</p>
+                    <p>{'Tel: ' + event.phone}</p>
                     <p id='location'>{'Location: ' + event.location}</p>
-                    <p id="submittedBy">{'Submitted On: ' + event.submittedon} </p>
+                    <p>{'Date: ' + event.date}</p>
+                    <p>{'Time: ' + event.time}</p>
                 </div>
             </main>
         </div>

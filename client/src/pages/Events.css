@@ -3,30 +3,26 @@ main {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-
 }
 .searchBar {
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 label {
     display: block;
     justify-content: center;
     text-transform: capitalize;
-    padding-top: 5px;
+    margin-top: 0.4rem;
 }
-
-input,label {
-    margin: 0.4rem;
-    
+.selectMenu {
+    margin: 0 0.5rem;
+    background-color: antiquewhite;
+    height: 50px;
+    font-size: 1rem;
 }
-input {
-    padding: 0.5rem 1rem;
-}
-
 
 .searchBar button {
     background-color: white;
@@ -42,5 +38,4 @@ input {
     text-align: center;
     text-transform: uppercase;
     touch-action: manipulation;
-    margin-left: 0.4rem;
 }

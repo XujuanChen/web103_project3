@@ -13,34 +13,24 @@ const Events = (props) => {
 
     const filterByLocation = (e) => {
         // console.log(e.target.value)
-        if (e.target.value === '0') {
-            setFilteredEvents(events)
-        }
-
-        if (e.target.value === '1') {
-            setFilteredEvents(events.filter(evt => evt.location === "The Echo Louge & Music Hall"))
-        } 
-        if (e.target.value === '2') {
-            setFilteredEvents(events.filter(evt => evt.location === "House of Blues"))
-        } 
-        if (e.target.value === '3') {
-            setFilteredEvents(events.filter(evt => evt.location === "The Pavillion at Toyota Music Factory"))
-        } 
-        if (e.target.value === '4') {
-            setFilteredEvents(events.filter(evt => evt.location === "American Airline Center"))
-        }
+        const value = e.target.value;
+        const locations = events.map(({location})=>location)
+        // console.log(locations)
+        const filtered = locations.filter((item)=>item===value)
+        // console.log(filtered)
+        setFilteredEvents(filtered);
     }
 
     return (
         <div className="Gifts">
             <div className='searchBar'>
-                <label for="site-search">Search Location ☞</label>
-                <select name="locations" id="location-select" onChange={e => filterByLocation(e)}>
+                <label htmlFor="site-search">Search Location ☞</label>
+                <select className='selectMenu' name="locations" id="location-select" onChange={e => filterByLocation(e)}>
                     <option value="0">-- Please choose a location --</option>
-                    <option value="1">The Echo Louge & Music Hall</option>
-                    <option value="2">House of Blues</option>
-                    <option value="3">The Pavillion at Toyota Music Factory</option>
-                    <option value="4">American Airline Center</option>
+                    <option value="logansquare">Logansquare</option>
+                    <option value="bucktown">Bucktown</option>
+                    <option value="downtown">Downtown</option>
+                    <option value="wickerpark4">Wickerpark</option>
                 </select>
                 <Link to='/events'><button onClick={()=>setFilteredEvents(events)}>All Events</button></Link>
 
@@ -49,11 +39,11 @@ const Events = (props) => {
             {
                 filteredEvents && filteredEvents.length > 0 ?
                 filteredEvents.map((event, index) => 
-                <Card id = {event.id} image={event.image} name={event.name} location={event.location}/>) : 
+                <Card key={index} id = {event.id} image={event.image} name={event.name} location={event.location}/>) : 
 
                 events && events.length > 0 ?
                 events.map((event,index) => 
-                <Card id={event.id} 
+                <Card key={index} id={event.id} 
                     image={event.image} 
                     name={event.name} 
                     location={event.location}/>

@@ -7,24 +7,41 @@ import { Link } from 'react-router-dom';
 import Events from './pages/Events'
 import EventDetails from './pages/eventDetails';
 import PageNotFound from './pages/PageNotFound';
-import Welcome from './pages/Welcome'
+import Locations from './pages/Locations'
+import LocationEvents from './pages/LocationEvents'
 
 function App() {
   const [events, setEvents] = useState([]);
   useEffect(() => {
     const fetchEvents = async() => {
-    const response = await fetch('http://localhost:3001/events')
-    const data = await response.json()
-    setEvents(data)
+      const response = await fetch('http://localhost:3001/events')
+      const data = await response.json()
+      setEvents(data);
     }
-    fetchEvents()
+    fetchEvents();
   }, []);
 
   // Sets up routes
   let element = useRoutes([
     {
       path:"/",
-      element: <Welcome />
+      element: <Locations />
+    },
+    {
+      path: '/logansquare',
+      element: <LocationEvents index={1} loc='logansquare'/>
+    },
+    {
+      path: '/bucktown',
+      element: <LocationEvents index={2} loc='bucktown'/>
+    },
+    {
+      path: '/downtown',
+      element: <LocationEvents index={3} loc='downtown'/>
+    },
+    {
+      path: '/wickerpark',
+      element: <LocationEvents index={4} loc='wickerpark'/>
     },
     {
       path: "/events",

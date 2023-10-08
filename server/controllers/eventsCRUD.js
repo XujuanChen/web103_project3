@@ -12,7 +12,7 @@ const getEvents = async (req, res) => {
 const getEventById = async (req, res) => {
     try {
         const selectQuery = `
-        SELECT name, image, description, submittedOn, location
+        SELECT name, website, about, phone, location, image, date, time
         FROM events
         WHERE id=$1
     `
