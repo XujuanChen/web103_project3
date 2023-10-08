@@ -13,6 +13,7 @@ const Locations= () => {
             const locs = json.map(({location})=>location)
             const filtered = json.filter(({location}, index)=> !locs.includes(location, index+1))
             setLocations(filtered);
+            // console.log(locations)
         }
       }
       fetchLocations();
@@ -24,7 +25,7 @@ const Locations= () => {
             {
                 locations && locations.length>0 ? 
                 locations.map((loc, index) => 
-                    <Link to={loc.location}><button key={index}>{loc.location}</button></Link>
+                    <Link to={loc.location} key={index}><button >{loc.location}</button></Link>
                 ) : <h3>🤦‍♀️ No locations found.</h3>
             }
             <Welcome />

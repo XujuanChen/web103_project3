@@ -17,7 +17,7 @@ const Card = (props) => {
     <div className='top-container' style={{ backgroundImage:`url(${event.image})`}}></div>
     <div className='bottom-container'>
         <h3>{event.name}</h3>
-        <Link to={'/events/' + event.id}><a>Read More →</a></Link>
+        <Link to={'/events/' + event.id}>Read More →</Link>
         <p>{'Location: ' + event.location}</p>
     </div>
 </div>

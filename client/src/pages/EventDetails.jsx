@@ -21,8 +21,8 @@ const EventDetails = ({data}) => {
 
     return (
         <div className="GiftDetails">
-            <main id="gift-content" class="gift-info">
-                <div class="image-container">
+            <main id="gift-content" className="gift-info">
+                <div className="image-container">
                     <img id="image" src={event.image} />
                 </div>
                 <div className="gift-details">

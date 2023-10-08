@@ -1,6 +1,3 @@
-import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { useRoutes } from 'react-router-dom'
 import { Link } from 'react-router-dom';
@@ -11,16 +8,6 @@ import Locations from './pages/Locations'
 import LocationEvents from './pages/LocationEvents'
 
 function App() {
-  const [events, setEvents] = useState([]);
-  useEffect(() => {
-    const fetchEvents = async() => {
-      const response = await fetch('http://localhost:3001/events')
-      const data = await response.json()
-      setEvents(data);
-    }
-    fetchEvents();
-  }, []);
-
   // Sets up routes
   let element = useRoutes([
     {
@@ -45,11 +32,11 @@ function App() {
     },
     {
       path: "/events",
-      element: <Events data={events}/>
+      element: <Events/>
     },
     {
       path:"/events/:id",
-      element: <EventDetails data={events} />
+      element: <EventDetails/>
     },
     {
       path:"/*",
@@ -69,7 +56,7 @@ function App() {
             <Link to='/'><button>Home</button></Link>
           </div>
           <div className='header-right'>
-            <Link to='/events'><button >All Events</button></Link>
+            <Link to='/events'><button>All Events</button></Link>
           </div>
         </div>
       </header>
