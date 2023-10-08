@@ -4,7 +4,7 @@ Submitted by: **Xujuan Chen**
 
 About this web app: **App description here**
 
-Time spent: **7** hours
+Time spent: **10** hours
 
 ## Required Features
 
