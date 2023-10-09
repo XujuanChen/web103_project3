@@ -9,9 +9,13 @@ const Events = () => {
 
     useEffect(() => {
         const fetchEvents = async() => {
-          const response = await fetch('http://localhost:3001/events')
-          const data = await response.json()
-          setEvents(data);
+            try {
+                const response = await fetch('http://localhost:3001/events')
+                const data = await response.json()
+                setEvents(data);
+            } catch (error) {
+                console.log(error)
+            }
         }
         fetchEvents();
       }, []);
@@ -19,8 +23,14 @@ const Events = () => {
     const filterByLocation = (e) => {
         let value = e.target.value;
         if (value !== "all") {
-            let filtered = events.filter(loc => {return loc.location === value}) 
-            setFilteredEvents(filtered);
+            try {
+                let filtered = events.filter(loc => {return loc.location === value}) 
+                setFilteredEvents(filtered);
+                console.log(filtered)
+                console.log(filteredEvents)
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
 
@@ -28,7 +38,7 @@ const Events = () => {
         <div className="Gifts">
             <div className='searchBar'>
                 <label htmlFor="site-search">Search Location ☞</label>
-                <select className='selectMenu' name="locations" id="location-select" onChange={e=>filterByLocation(e)}>
+                <select className='selectMenu' name="locations" id="location-select" onChange={(e)=>filterByLocation(e) }>
                     <option value="all">-- Please choose a location --</option>
                     <option value="logansquare">Logansquare</option>
                     <option value="bucktown">Bucktown</option>
@@ -40,12 +50,12 @@ const Events = () => {
             <main>
             {
                 filteredEvents && filteredEvents.length > 0 ?
-                filteredEvents.map((event, index) => 
-                <Card key={index} id = {event.id} image={event.image} name={event.name} location={event.location}/>) 
+                filteredEvents.map((event) => 
+                <Card key={event.id} id = {event.id} image={event.image} name={event.name} location={event.location}/>) 
                 : 
                 events && events.length > 0 ?
-                events.map((event,index) => 
-                <Card key={index} id={event.id} 
+                events.map((event) => 
+                <Card key={event.id} id={event.id} 
                     image={event.image} 
                     name={event.name} 
                     location={event.location}/>
